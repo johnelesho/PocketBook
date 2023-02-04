@@ -20,7 +20,7 @@ namespace PocketBook.Data
 
         public IUserRepository User { get; private set; }
 
-        public async Task CompleteAsyn()
+        public async Task CompleteAsync()
         {
             await context.SaveChangesAsync();
         }

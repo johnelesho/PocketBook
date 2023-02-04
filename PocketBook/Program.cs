@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using PocketBook.Data;
+using PocketBook.IConfiguration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +14,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 {
     options.UseSqlite(Configurations.GetConnectionString("DefaultConnection"));
 });
+builder.Services.AddScoped<IUnitOfWork, UnitofWork>();
 
 var app = builder.Build();
 

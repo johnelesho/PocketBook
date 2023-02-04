@@ -15,6 +15,7 @@ namespace PocketBook.Core.Repositories
             ) {
             _context = context;
             _logger= lo;
+            _dbSet = context.Set<T>();
         }
         public virtual async Task<bool> Add(T entity)
         {

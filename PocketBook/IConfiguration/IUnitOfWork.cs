@@ -6,6 +6,6 @@ namespace PocketBook.IConfiguration
     {
         IUserRepository User { get; }
 
-        Task CompleteAsyn();
+        Task CompleteAsync();
     }
 }
