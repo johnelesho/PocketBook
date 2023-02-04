@@ -16,28 +16,35 @@ namespace PocketBook.Core.Repositories
             _context = context;
             _logger= lo;
         }
-        public async Task<bool> Add(T entity)
+        public virtual async Task<bool> Add(T entity)
         {
              await _dbSet.AddAsync(entity);
+     
             return true;
         }
 
-        public Task<bool> Delete(Guid id)
+        public virtual async Task<bool> Delete(Guid id)
         {
-          fineFindById(id);
+          var t = await FindById(id);
+            if (t is null)
+            {
+                return false;
+            }
+            _dbSet.Remove(t);
+            return true;
         }
 
-        public async Task<IEnumerable<T>> FindAll()
+        public virtual async Task<IEnumerable<T>> FindAll()
         {
             return await  _dbSet.ToListAsync();
         }
 
-        public async Task<IEnumerable<T>> FindById(Guid id)
+        public virtual async Task<T> FindById(Guid id)
         {
             return await _dbSet.FindAsync(id);
         }
 
-        public Task<bool> Update(T entity)
+        public virtual Task<bool> Update(T entity)
         {
             throw new NotImplementedException();
         }

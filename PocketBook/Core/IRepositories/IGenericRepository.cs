@@ -6,7 +6,7 @@ namespace PocketBook.Core.IRepositories
     {
         
         Task<IEnumerable<T>> FindAll();
-        Task<IEnumerable<T>> FindById(Guid id);
+        Task<T> FindById(Guid id);
 
         Task<bool> Add(T entity);
         Task<bool> Update(T entity);
